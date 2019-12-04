@@ -20,3 +20,5 @@ const DraggableColorList = SortableContainer(({ colors, removeColor }) => {
 
 export default DraggableColorList;
 
+
+
