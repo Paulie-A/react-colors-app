@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import PaletteMetaForm from './PaletteMetaForm';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -46,13 +47,7 @@ constructor(props){
     this.state = { newPaletteName: ""};
     this.handleChange = this.handleChange.bind(this);
 }
-componentDidMount() {
-  ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
-    this.props.palettes.every(
-      ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-    )
-  );
-}
+
 
 handleChange(evt) {
   this.setState({
@@ -61,7 +56,7 @@ handleChange(evt) {
 }
 
 render() {
-  const { classes, open } = this.props;
+  const { classes, open, palettes, handleSubmit } = this.props;
   const { newPaletteName} = this.state;
     return (
         <div>
@@ -89,23 +84,8 @@ render() {
                
               </Toolbar>
               <div className={classes.navBtns}>
-                <ValidatorForm 
-                onSubmit={() => this.props.handleSubmit(newPaletteName)}
-                >
-                <TextValidator
-                label="Palette Name" 
-                value={this.state.newPaletteName}
-                name="newPaletteName"
-                onChange={this.handleChange}
-                validators={["required", "isPaletteNameUnique"]}
-                errorMessages={["Enter Palette Name", "Name already used"]}
-                />
-                <Button 
-                variant="contained" color="primary" type="submit" 
-                >
-                  Save Palette
-                </Button>
-                </ValidatorForm>
+              
+                <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit}/>
                 <Link to="/">
                 <Button variant="contained" color="secondary">Go back</Button>
                
