@@ -38,10 +38,10 @@ hideForm(){
 }
 
 render() {
-  const { classes, open, palettes, handleSubmit } = this.props;
-  const { newPaletteName} = this.state;
+  const { classes, open, palettes, handleSubmit, handleDrawerOpen } = this.props;
+  const { formShowing} = this.state;
     return (
-        <div>
+        <div className={classes.root}>
  <CssBaseline />
             <AppBar
               position="fixed"
@@ -54,7 +54,7 @@ render() {
                 <IconButton
                   color="inherit"
                   aria-label="Open drawer"
-                  onClick={this.props.handleDrawerOpen}
+                  onClick={handleDrawerOpen}
                   className={classNames(classes.menuButton, {
                     [classes.hide]: open
                   })}
@@ -76,7 +76,7 @@ render() {
             </Button>
                 </div>
             </AppBar>
-            {this.state.formShowing && (
+            {formShowing && (
             <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit}hideForm={this.hideForm}/>
             )}
         </div>
