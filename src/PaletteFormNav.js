@@ -21,7 +21,6 @@ constructor(props){
     this.hideForm = this.hideForm.bind(this);
 }
 
-
 handleChange(evt) {
   this.setState({
     [evt.target.name]: evt.target.value
@@ -63,8 +62,6 @@ render() {
                 <Typography variant="h6" color="inherit" noWrap>
                   Create a Palette
                 </Typography>
-                
-               
               </Toolbar>
               <div className={classes.navBtns}>    
                 <Link to="/">

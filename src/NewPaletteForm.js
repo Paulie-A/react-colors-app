@@ -13,7 +13,6 @@ import DraggableColorList from './DraggableColorList'
 import {arrayMove} from "react-sortable-hoc";
 import styles from './styles/NewPaletteFormStyles';
 
-
 class NewPaletteForm extends Component {
   static defaultProps = {
     maxColors: 20
@@ -32,8 +31,6 @@ class NewPaletteForm extends Component {
         this.addRandomColor = this.addRandomColor.bind(this);
     }
 
-   
-    
       handleDrawerOpen = () => {
         this.setState({ open: true });
       };
@@ -41,7 +38,6 @@ class NewPaletteForm extends Component {
       handleDrawerClose = () => {
         this.setState({ open: false });
       };
-
 
       addNewColor(newColor) {
           this.setState({ 

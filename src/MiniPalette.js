@@ -17,7 +17,7 @@ class MiniPalette extends PureComponent {
         this.props.goToPalette(this.props.id);
     }
     render(){
-        const {classes, paletteName, emoji, colors, handleClick, id } = this.props;
+        const {classes, paletteName, emoji, colors } = this.props;
         const miniColorBoxes = colors.map(color => (
         <div 
         className={classes.miniColor} 
@@ -32,7 +32,6 @@ class MiniPalette extends PureComponent {
                 style={{ transition: "all 0.3s ease-in-out" }}
                 onClick={this.deletePalette}
                 />
-           
             <div className={classes.colors}>{miniColorBoxes}</div>
                 <h5 className={classes.title}>
                     {paletteName} <span className={classes.emoji}>{emoji}</span>

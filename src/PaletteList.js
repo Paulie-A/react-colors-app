@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import MiniPalette from './MiniPalette';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { withStyles } from '@material-ui/styles';
-import styles from './styles/PaletteListStyles';
 import Dialog from '@material-ui/core/Dialog';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,10 +10,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import DialogTitle from '@material-ui/core/DialogTitle';
+import MiniPalette from './MiniPalette';
+import { withStyles } from '@material-ui/styles';
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
-
-
+import styles from './styles/PaletteListStyles';
 
 class PaletteList extends Component {
     constructor(props){
@@ -44,8 +42,8 @@ class PaletteList extends Component {
         this.closeDialog();
     }
     render() {
-        const { palettes, classes, deletePalette } = this.props;
-        const { openDeleteDialog, deletingId } = this.state;
+        const { palettes, classes } = this.props;
+        const { openDeleteDialog } = this.state;
         return (
             <div className={classes.root}>
                 <div className={classes.container}>
@@ -68,7 +66,7 @@ class PaletteList extends Component {
                 ))}
                 </TransitionGroup>
                     </div>
-                    <Dialog open={openDeleteDialog} aria-labelldby="delete-dialog-title" onClose={this.closeDialog}>
+                    <Dialog open={openDeleteDialog} aria-labelledby="delete-dialog-title" onClose={this.closeDialog}>
                         <DialogTitle id="delete-dialog-title">Delete This Palette?</DialogTitle>
                         <List>
                             <ListItem button onClick={this.handleDelete}>
